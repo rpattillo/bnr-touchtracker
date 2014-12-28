@@ -7,7 +7,15 @@
 //
 
 #import "DrawViewController.h"
+#import "DrawView.h"
 
 @implementation DrawViewController
+
+#pragma mark - View life cycle
+
+- (void)loadView
+{
+   self.view = [[DrawView alloc] initWithFrame:CGRectZero];
+}
 
 @end
