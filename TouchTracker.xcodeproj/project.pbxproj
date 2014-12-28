@@ -10,7 +10,6 @@
 		9C5C69821A50B995007046CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C69811A50B995007046CD /* main.m */; };
 		9C5C69851A50B995007046CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C69841A50B995007046CD /* AppDelegate.m */; };
 		9C5C69881A50B995007046CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C69871A50B995007046CD /* ViewController.m */; };
-		9C5C698B1A50B995007046CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C69891A50B995007046CD /* Main.storyboard */; };
 		9C5C698D1A50B995007046CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C698C1A50B995007046CD /* Images.xcassets */; };
 		9C5C69901A50B995007046CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C698E1A50B995007046CD /* LaunchScreen.xib */; };
 		9C5C699C1A50B995007046CD /* TouchTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C699B1A50B995007046CD /* TouchTrackerTests.m */; };
@@ -34,7 +33,6 @@
 		9C5C69841A50B995007046CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C5C69861A50B995007046CD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9C5C69871A50B995007046CD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9C5C698A1A50B995007046CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C5C698C1A50B995007046CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C5C698F1A50B995007046CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9C5C69951A50B995007046CD /* TouchTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 				9C5C69841A50B995007046CD /* AppDelegate.m */,
 				9C5C69861A50B995007046CD /* ViewController.h */,
 				9C5C69871A50B995007046CD /* ViewController.m */,
-				9C5C69891A50B995007046CD /* Main.storyboard */,
 				9C5C698C1A50B995007046CD /* Images.xcassets */,
 				9C5C698E1A50B995007046CD /* LaunchScreen.xib */,
 				9C5C697F1A50B995007046CD /* Supporting Files */,
@@ -199,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C5C698B1A50B995007046CD /* Main.storyboard in Resources */,
 				9C5C69901A50B995007046CD /* LaunchScreen.xib in Resources */,
 				9C5C698D1A50B995007046CD /* Images.xcassets in Resources */,
 			);
@@ -244,14 +240,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C5C69891A50B995007046CD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C5C698A1A50B995007046CD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9C5C698E1A50B995007046CD /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -412,6 +400,7 @@
 				9C5C69A11A50B995007046CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C5C69A21A50B995007046CD /* Build configuration list for PBXNativeTarget "TouchTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +409,7 @@
 				9C5C69A41A50B995007046CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
