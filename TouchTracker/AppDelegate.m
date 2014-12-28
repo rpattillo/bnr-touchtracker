@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DrawViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+   
+   DrawViewController *drawViewController = [[DrawViewController alloc] init];
+   self.window.rootViewController = drawViewController;
    
    self.window.backgroundColor = [UIColor whiteColor];
    [self.window makeKeyAndVisible];
