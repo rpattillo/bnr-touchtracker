@@ -90,17 +90,17 @@
 			children = (
 				9C5C69831A50B995007046CD /* AppDelegate.h */,
 				9C5C69841A50B995007046CD /* AppDelegate.m */,
-				9C179DC71A50C27A00145EEE /* Line.h */,
-				9C179DC81A50C27A00145EEE /* Line.m */,
-				9C5C69861A50B995007046CD /* ViewController.h */,
-				9C5C69871A50B995007046CD /* ViewController.m */,
-				9C5C698C1A50B995007046CD /* Images.xcassets */,
-				9C5C698E1A50B995007046CD /* LaunchScreen.xib */,
-				9C5C697F1A50B995007046CD /* Supporting Files */,
 				9C179DCA1A50C49D00145EEE /* DrawView.h */,
+				9C179DCB1A50C49D00145EEE /* DrawView.m */,
 				9C179DCD1A50C4EA00145EEE /* DrawViewController.h */,
 				9C179DCE1A50C4EA00145EEE /* DrawViewController.m */,
-				9C179DCB1A50C49D00145EEE /* DrawView.m */,
+				9C5C698C1A50B995007046CD /* Images.xcassets */,
+				9C5C698E1A50B995007046CD /* LaunchScreen.xib */,
+				9C179DC71A50C27A00145EEE /* Line.h */,
+				9C179DC81A50C27A00145EEE /* Line.m */,
+				9C5C697F1A50B995007046CD /* Supporting Files */,
+				9C5C69861A50B995007046CD /* ViewController.h */,
+				9C5C69871A50B995007046CD /* ViewController.m */,
 			);
 			path = TouchTracker;
 			sourceTree = "<group>";
