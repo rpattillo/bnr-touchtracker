@@ -88,7 +88,7 @@
 }
 
 
-#pragma mark - Gesture Actions
+#pragma mark - Actions
 
 - (void)doubleTap:(UIGestureRecognizer *)gr
 {
@@ -107,11 +107,41 @@
    CGPoint point = [gr locationInView:self];
    self.selectedLine = [self lineAtPoint:point];
    
+   if (self.selectedLine) {
+      [self becomeFirstResponder];
+      
+      UIMenuController *menu = [UIMenuController sharedMenuController];
+      
+      UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteLine:)];
+      
+      menu.menuItems = @[deleteItem];
+      
+      [menu setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+      [menu setMenuVisible:YES animated:YES];
+   }
+   else {
+      [[UIMenuController sharedMenuController] setMenuVisible:NO animated:NO];
+   }
+   
    [self setNeedsDisplay];
 }
 
 
-#pragma mark - Touch handling
+- (void)deleteLine:(id)sender
+{
+   [self.finishedLines removeObjectIdenticalTo:self.selectedLine];
+   
+   [self setNeedsDisplay];
+}
+
+
+#pragma mark - Responder Overrides
+
+- (BOOL)canBecomeFirstResponder
+{
+   return YES;
+}
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
