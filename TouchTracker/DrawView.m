@@ -31,6 +31,13 @@
       _finishedLines = [[NSMutableArray alloc] init];
       self.backgroundColor = [UIColor grayColor];
       self.multipleTouchEnabled = YES;
+      
+      UITapGestureRecognizer *doubleTapGR = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(doubleTap:)];
+      doubleTapGR.numberOfTapsRequired = 2;
+      doubleTapGR.delaysTouchesBegan = YES;
+      [self addGestureRecognizer:doubleTapGR];
    }
    
    return self;
@@ -65,6 +72,17 @@
    for (NSValue *key in self.linesInProgress) {
       [self strokeLine:self.linesInProgress[key]];
    }
+}
+
+#pragma mark - Gesture Handlers
+
+- (void)doubleTap:(UIGestureRecognizer *)gr
+{
+   NSLog(@"Recognized Double Tap");
+   
+   [self.linesInProgress removeAllObjects];
+   [self.finishedLines removeAllObjects];
+   [self setNeedsDisplay];
 }
 
 
