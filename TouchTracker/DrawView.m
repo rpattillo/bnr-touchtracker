@@ -9,8 +9,9 @@
 #import "DrawView.h"
 #import "Line.h"
 
-@interface DrawView ()
+@interface DrawView () <UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) UIPanGestureRecognizer *moveGR;
 @property (nonatomic, strong) NSMutableDictionary *linesInProgress;
 @property (nonatomic, strong) NSMutableArray *finishedLines;
 @property (nonatomic, weak) Line *selectedLine;
@@ -46,6 +47,17 @@
       tapGR.delaysTouchesBegan = YES;
       [tapGR requireGestureRecognizerToFail:doubleTapGR];
       [self addGestureRecognizer:tapGR];
+      
+      UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc]
+                                                   initWithTarget:self
+                                                   action:@selector(longPress:)];
+      [self addGestureRecognizer:longPressGR];
+      
+      _moveGR = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                        action:@selector(moveLine:)];
+      _moveGR.delegate = self;
+      _moveGR.cancelsTouchesInView = NO;
+      [self addGestureRecognizer:_moveGR];
    }
    
    return self;
@@ -127,11 +139,59 @@
 }
 
 
+- (void)longPress:(UIGestureRecognizer *)gr
+{
+   if (gr.state == UIGestureRecognizerStateBegan) {
+      CGPoint point = [gr locationInView:self];
+      
+      self.selectedLine = [self lineAtPoint:point];
+      
+      if (self.selectedLine) {
+         [self.linesInProgress removeAllObjects];
+      }
+   }
+   else if (gr.state == UIGestureRecognizerStateEnded) {
+      self.selectedLine = nil;
+   }
+   
+   [self setNeedsDisplay];
+}
+
+
 - (void)deleteLine:(id)sender
 {
    [self.finishedLines removeObjectIdenticalTo:self.selectedLine];
    
    [self setNeedsDisplay];
+}
+
+
+- (void)moveLine:(UIPanGestureRecognizer *)gr
+{
+   if (!self.selectedLine) {
+      return;
+   }
+   
+   if (gr.state == UIGestureRecognizerStateChanged) {
+      CGPoint translation = [gr translationInView:self];
+      
+      CGPoint begin = self.selectedLine.begin;
+      
+      begin.x += translation.x;
+      begin.y += translation.y;
+      
+      CGPoint end = self.selectedLine.end;
+      
+      end.x += translation.x;
+      end.y += translation.y;
+      
+      self.selectedLine.begin = begin;
+      self.selectedLine.end = end;
+      
+      [self setNeedsDisplay];
+      
+      [gr setTranslation:CGPointZero inView:self];
+   }
 }
 
 
@@ -206,6 +266,19 @@
    }
    
    [self setNeedsDisplay];
+}
+
+
+#pragma mark - Gesture Recognizer delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+   shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+   if (gestureRecognizer == self.moveGR) {
+      return YES;
+   }
+   
+   return NO;
 }
 
 
