@@ -12,6 +12,7 @@
 @interface DrawView () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPanGestureRecognizer *moveGR;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGR;
 @property (nonatomic, strong) NSMutableDictionary *linesInProgress;
 @property (nonatomic, strong) NSMutableArray *finishedLines;
 @property (nonatomic, weak) Line *selectedLine;
@@ -48,10 +49,10 @@
       [tapGR requireGestureRecognizerToFail:doubleTapGR];
       [self addGestureRecognizer:tapGR];
       
-      UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc]
+      _longPressGR = [[UILongPressGestureRecognizer alloc]
                                                    initWithTarget:self
                                                    action:@selector(longPress:)];
-      [self addGestureRecognizer:longPressGR];
+      [self addGestureRecognizer:_longPressGR];
       
       _moveGR = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                         action:@selector(moveLine:)];
@@ -168,7 +169,8 @@
 
 - (void)moveLine:(UIPanGestureRecognizer *)gr
 {
-   if (!self.selectedLine) {
+   if (!self.selectedLine
+      || self.longPressGR.state != UIGestureRecognizerStateChanged) {
       return;
    }
    
